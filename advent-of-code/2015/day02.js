@@ -4,7 +4,7 @@ const readline = require('readline');
 const fs = require('fs');
 
 const readInterface = readline.createInterface({
-    input: fs.createReadStream('./day02-1.data'),
+    input: fs.createReadStream('./day02.data'),
     output: null,
     console: false
 });

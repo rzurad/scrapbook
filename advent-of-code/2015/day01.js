@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 
-fs.readFile('./day01-1.data', 'utf-8', (err, data) => {
+fs.readFile('./day01.data', 'utf-8', (err, data) => {
     if (err) throw err;
 
     let floor = 0;
