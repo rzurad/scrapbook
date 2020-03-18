@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+    <head>
+        <title>AFK, But Still Here</title>
+        <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+        <style>
+html, body, #container {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    background-color: black;
+}
+
+#container {
+    height: auto !important;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Dosis', sans-serif;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#container.here strong, #container.here h1 {
+    color: #34eb5f;
+}
+
+#container.afk strong, #container.afk h1 {
+    color: #eb344c;
+}
+
+h1 {
+    font-size: 100px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+p {
+    font-size: 32px;
+    margin: 7px;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+    </style>
+    </head>
+    <body>
+        <div id="container">
+            <h1>AFK</h1>
+            <div id="message-container"></div>
+        </div>
+        <script type="text/javascript">
+(function () {
+    'use strict';
+
+    var colors = {
+        afk: '#eb344c',
+        here: '#34eb5f'
+    };
+
+    var messages = {
+        afk: [
+            '<p>Sorry, I had to step away</p>',
+            '<p>and amd not participating</p>',
+            '<br/><br/>',
+            "<p><strong>I'll be right back</strong></p>"
+        ].join(''),
+        here: [
+            '<p>But <strong>still here</strong> and</p>',
+            '<p><strong>participating</strong></p>',
+            '<p>thanks to the magic of wireless</p>'
+        ].join('')
+    };
+
+    var qs = window.location.search ? window.location.search.substr(1).split('&').reduce(function (acc, kvp) {
+        var split = kvp.split('=');
+
+        acc[split[0]] = split[1];
+
+        return acc;
+    }, {}) : {};
+
+    var DEFAULT_MSG = 'here';
+    var message = messages[qs.message || DEFAULT_MSG];
+
+    document.getElementById('container').classList.add(qs.message || DEFAULT_MSG);
+    document.getElementById('message-container').innerHTML = message;
+    document.addEventListener('keypress', function (e) {
+        if (e.altKey && e.key === 'f') {
+            document.getElementsByTagName('html')[0].requestFullscreen();
+        }
+    });
+}());
+        </script>
+    </body>
+</html>
+
