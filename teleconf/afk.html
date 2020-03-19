@@ -48,6 +48,14 @@ h1 {
     margin-top: 0;
 }
 
+#fs-button {
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+}
     </style>
     </head>
     <body>
@@ -55,6 +63,7 @@ h1 {
             <h1>AFK</h1>
             <div id="message-container"></div>
         </div>
+	<div id="fs-button"></div>
         <script type="text/javascript">
 (function () {
     'use strict';
@@ -67,7 +76,7 @@ h1 {
     var messages = {
         afk: [
             '<p>Sorry, I had to step away</p>',
-            '<p>and amd not participating</p>',
+            '<p>and am not participating</p>',
             '<br/><br/>',
             "<p><strong>I'll be right back</strong></p>"
         ].join(''),
@@ -91,10 +100,8 @@ h1 {
 
     document.getElementById('container').classList.add(qs.message || DEFAULT_MSG);
     document.getElementById('message-container').innerHTML = message;
-    document.addEventListener('keypress', function (e) {
-        if (e.altKey && e.key === 'f') {
-            document.getElementsByTagName('html')[0].requestFullscreen();
-        }
+    document.getElementById('fs-button').addEventListener('click', function (e) {
+        document.getElementsByTagName('html')[0].requestFullscreen();
     });
 }());
         </script>
